@@ -2,7 +2,7 @@ var fs = require("fs");
 var naive = require('./Naive.js');
 var groups = require('./groups.js');
 
-var input = fs.readFileSync('test.in', 'utf-8').split('\n');
+var input = fs.readFileSync('dc.in', 'utf-8').split('\n');
 
 var inputConfig = input[0].split(' ');
 
@@ -57,9 +57,10 @@ for (var i = 0; i < M; i++)
 	//console.log("Server "+ serverInfo);
 }
 
-console.log(groups(servers, P));
+//console.log(groups(servers, P));
 
 var newTableServers = naive.arrange_groups_native(servers, matriceDispo);
 newTableServers = naive.pooling(newTableServers,P);
+newTableServers = groups(newTableServers, P);
 naive.output(newTableServers);
 //console.log(servers);

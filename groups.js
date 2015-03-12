@@ -36,6 +36,8 @@ function grouper(servers, P)
 			groups[minGroupId].push(newServers[i][j]);
 		}
 	}
+	
+	return servers;
 }
 
 function minScoreGroup(groups)
