@@ -4,12 +4,13 @@
 function arrange_groups_native (tableServeurs,tableOccupation) {
 	
 	for (var i = 0; i < tableServeurs.length; i++) {
+		var erreur = 0;
 
 		for (var ligne = 0; ligne < tableOccupation.length; ligne++) {
 
 			for (var col = 0; col < tableOccupation[ligne].length; col++) {
 		
-				var erreur = 0;
+
 				if (tableOccupation[ligne][col])
 				{
 					for (var x = col+1; x<col+tableServeurs[i].slots; x++) {
@@ -23,11 +24,16 @@ function arrange_groups_native (tableServeurs,tableOccupation) {
 						// OK for insertions of servers
 							tableServeurs[i].x = col;
 							tableServeurs[i].y = ligne;
-							for (var x = col+1; x<col+tableServeurs[i].slots; x++) {
+							for (var x = col; x<col+tableServeurs[i].slots; x++) {
 								tableOccupation[ligne][x]=false;
 							};
+						break;
 					}
 				}
+			}
+			if (erreur==0)
+			{
+				break;
 			}
 		}
 		
@@ -37,7 +43,7 @@ function arrange_groups_native (tableServeurs,tableOccupation) {
 
 function output (tableServeurs) {
 	var fs = require('fs');
-	var stream = fs.createWriteStream("my_file.txt");
+	var stream = fs.createWriteStream("output.txt");
 		stream.once('open', function(fd) {
 			for (var i = 0; i <tableServeurs.length ; i++) {
 				if (tableServeurs[i].y == 0 && tableServeurs[i].x==0)

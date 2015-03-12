@@ -1,7 +1,7 @@
 var fs = require("fs");
 var naive = require('./Naive.js');
 
-var input = fs.readFileSync('test.in', 'utf-8').split('\n');
+var input = fs.readFileSync('dc.in', 'utf-8').split('\n');
 
 var inputConfig = input[0].split(' ');
 
