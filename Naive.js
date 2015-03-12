@@ -40,11 +40,18 @@ function output (tableServeurs) {
 	var stream = fs.createWriteStream("my_file.txt");
 		stream.once('open', function(fd) {
 			for (var i = 0; i <tableServeurs.length ; i++) {
+				if (tableServeurs[i].y == 0 && tableServeurs[i].x==0)
+				{
+					stream.write("x\n");
+				}
+				else
+				{
 				stream.write(tableServeurs[i].y.toString());
 				stream.write(" ");
 				stream.write(tableServeurs[i].x.toString());
 				stream.write(" ");
 		  		stream.write(tableServeurs[i].group+"\n");
+				}
 			};
 		  stream.end();
 		});
