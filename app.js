@@ -12,10 +12,10 @@ var M = inputConfig[4];
 
 
 // Creating true/false matrix
-var matriceDispo = new Array();
+var matriceDispo = [];
 for (var i = 0; i < R; i++)
 {
-	var row = new Array();
+	var row = [];
 	for (var j = 0; j < S; j++)
 	{
 		row[j] = true;
@@ -34,5 +34,24 @@ for (var i = 0; i < U; i++)
 	
 	matriceDispo[uSlot[0]][uSlot[1]] = false;
 }
+//console.log(matriceDispo);
 
-console.log(matriceDispo);
+//Servers array
+var servers = [];
+for (var i = 0; i < M; i++)
+{
+	var index = i+1+parseInt(U);
+	var serverInfo = input[index].split(' ');
+	
+	servers.push({
+		slots: parseInt(serverInfo[0]),
+		cap: parseInt(serverInfo[1]),
+		x: 0,
+		y: 0,
+		group: 0,
+		score: 0
+	});
+	//console.log("Server "+ serverInfo);
+}
+
+//console.log(servers);
