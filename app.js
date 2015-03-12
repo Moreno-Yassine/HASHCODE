@@ -56,5 +56,6 @@ for (var i = 0; i < M; i++)
 }
 
 var newTableServers = naive.arrange_groups_native(servers, matriceDispo);
+newTableServers = naive.pooling(newTableServers,P);
 naive.output(newTableServers);
 //console.log(servers);
