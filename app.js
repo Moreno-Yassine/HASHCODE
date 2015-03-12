@@ -1,4 +1,5 @@
 var fs = require("fs");
+var naive = require('./Naive.js');
 
 var input = fs.readFileSync('test.in', 'utf-8').split('\n');
 
@@ -54,4 +55,6 @@ for (var i = 0; i < M; i++)
 	//console.log("Server "+ serverInfo);
 }
 
+var newTableServers = naive.arrange_groups_native(servers, matriceDispo);
+naive.output(newTableServers);
 //console.log(servers);

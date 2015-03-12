@@ -8,11 +8,11 @@ function arrange_groups_native (tableServeurs,tableOccupation) {
 		for (var ligne = 0; ligne < tableOccupation.length; ligne++) {
 
 			for (var col = 0; col < tableOccupation[ligne].length; col++) {
-
-				int erreur = 0;
+		
+				var erreur = 0;
 				if (tableOccupation[ligne][col])
 				{
-					for (var x = col+1; i<col+tableServeurs[i].slots; x++) {
+					for (var x = col+1; x<col+tableServeurs[i].slots; x++) {
 						if (!tableOccupation[ligne][x])
 						{
 							erreur = 1;
@@ -23,12 +23,16 @@ function arrange_groups_native (tableServeurs,tableOccupation) {
 						// OK for insertions of servers
 							tableServeurs[i].x = col;
 							tableServeurs[i].y = ligne;
+							for (var x = col+1; x<col+tableServeurs[i].slots; x++) {
+								tableOccupation[ligne][x]=false;
+							};
 					}
 				}
-			};
-		};
-	};	
-	
+			}
+		}
+		
+	}
+	return tableServeurs;	
 }
 
 function output (tableServeurs) {
@@ -36,12 +40,18 @@ function output (tableServeurs) {
 	var stream = fs.createWriteStream("my_file.txt");
 		stream.once('open', function(fd) {
 			for (var i = 0; i <tableServeurs.length ; i++) {
-				stream.write(tableServeurs[i].y);
+				stream.write(tableServeurs[i].y.toString());
 				stream.write(" ");
-				stream.write(tableServeurs[i].x);
+				stream.write(tableServeurs[i].x.toString());
 				stream.write(" ");
 		  		stream.write(tableServeurs[i].group+"\n");
 			};
 		  stream.end();
 		});
 }
+
+module.exports = {
+	test: "hello",
+	arrange_groups_native: arrange_groups_native,
+	output: output
+};
