@@ -1,16 +1,31 @@
-
+function pooling(tableServeurs,pools)
+{
+var pool = 0;
+	for (var serv = 0;serv <tableServeurs.length;serv++)
+	{
+		if (tableServeurs[serv].y == 0 && tableServeurs[serv].x==0)
+				{
+				}
+				else
+				{
+					tableServeurs[serv].group=pool;
+					pool++;
+					if (pool>=pools)
+						{pool= 0;}
+				}
+	}
+	return tableServeurs;
+}
 
 
 function arrange_groups_native (tableServeurs,tableOccupation) {
-	
+	var line = 0;
 	for (var i = 0; i < tableServeurs.length; i++) {
 		var erreur = 0;
-
-		for (var ligne = 0; ligne < tableOccupation.length; ligne++) {
-
+		if (line == tableOccupation.length)
+		 {line =0;}
+		for (var ligne = line; ligne < tableOccupation.length; ligne++) {
 			for (var col = 0; col < tableOccupation[ligne].length; col++) {
-		
-
 				if (tableOccupation[ligne][col])
 				{
 					for (var x = col+1; x<col+tableServeurs[i].slots; x++) {
@@ -27,6 +42,7 @@ function arrange_groups_native (tableServeurs,tableOccupation) {
 							for (var x = col; x<col+tableServeurs[i].slots; x++) {
 								tableOccupation[ligne][x]=false;
 							};
+							line = ligne+1;
 						break;
 					}
 				}
@@ -66,5 +82,6 @@ function output (tableServeurs) {
 module.exports = {
 	test: "hello",
 	arrange_groups_native: arrange_groups_native,
-	output: output
+	output: output,
+	pooling: pooling
 };
