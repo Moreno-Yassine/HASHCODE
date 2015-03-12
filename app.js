@@ -1,7 +1,7 @@
 var fs = require("fs");
 var naive = require('./Naive.js');
 
-var input = fs.readFileSync('test.in', 'utf-8').split('\n');
+var input = fs.readFileSync('dc.in', 'utf-8').split('\n');
 
 var inputConfig = input[0].split(' ');
 
@@ -51,7 +51,8 @@ for (var i = 0; i < M; i++)
 		y: 0,
 		group: 0,
 		score: 0, 
-		place : false
+		place : false, 
+		serverId : i 
 	});
 	//console.log("Server "+ serverInfo);
 }
@@ -152,3 +153,4 @@ function fillList(listServers, listeDoccupation)
 		matriceDispo : listeDoccupation
 	};
 }
+
