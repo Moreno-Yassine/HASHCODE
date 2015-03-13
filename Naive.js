@@ -68,9 +68,9 @@ function output (tableServeurs) {
 				}
 				else
 				{
-				stream.write(tableServeurs[i].y.toString());
-				stream.write(" ");
 				stream.write(tableServeurs[i].x.toString());
+				stream.write(" ");
+				stream.write(tableServeurs[i].y.toString());
 				stream.write(" ");
 		  		stream.write(tableServeurs[i].group+"\n");
 				}

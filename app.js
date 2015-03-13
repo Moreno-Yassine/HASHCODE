@@ -85,8 +85,8 @@ matriceDispo = mon_result.matriceDispo;
 
 function sortServers(listServers)
 {
-	var facteurTaille = 0.2; 
-	var facteurPoids = 0.8; 
+	var facteurTaille = 0.5; 
+	var facteurPoids = 0.5; 
 
 
 	for(var i= 0; i<M; i++)
