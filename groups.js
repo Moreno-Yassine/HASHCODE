@@ -2,16 +2,16 @@
 
 function generateMatrix(servers)
 {
-	console.log(servers.length);
+	//console.log(servers.length);
 	var newServers = [];
 	
 	for (var i = 0; i < servers.length; i++) {
-		console.log(servers[i].y);
-		if (	!newServers[servers[i].y]) {
-			newServers[servers[i].y] = [];
+		//console.log(servers[i].y);
+		if (	!newServers[servers[i].x]) {
+			newServers[servers[i].x] = [];
 
 		}
-		newServers[servers[i].y].push(servers[i]);
+		newServers[servers[i].x].push(servers[i]);
 		//i+=servers[i].slots;
 	}
 	
@@ -21,12 +21,19 @@ function generateMatrix(servers)
 function grouper(servers, P)
 {
 	var newServers = generateMatrix(servers);
+
+
 	var groups = [];
 	for (var i = 0; i < P; i++) {
 		groups[i] = [];
 	}
-	
-	for (var i = 0; i < newServers.length; i++) {
+	 
+	console.log(newServers.length);
+	for (var i = 0; i < newServers.length; i++) 
+	{
+		console.log(i);
+		
+		console.log(newServers[i]);
 		for (var j = 0; j < newServers[i].length; j++)
 		{
 			// Calcul du groupe ayant le plus petit score

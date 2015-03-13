@@ -62,7 +62,7 @@ function output (tableServeurs) {
 	var stream = fs.createWriteStream("output.txt");
 		stream.once('open', function(fd) {
 			for (var i = 0; i <tableServeurs.length ; i++) {
-				if (tableServeurs[i].y == 0 && tableServeurs[i].x==0)
+				if (tableServeurs[i].place == false)
 				{
 					stream.write("x\n");
 				}
